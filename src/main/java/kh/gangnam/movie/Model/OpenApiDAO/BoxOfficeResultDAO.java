@@ -2,7 +2,6 @@ package kh.gangnam.movie.Model.OpenApiDAO;
 
 import jakarta.persistence.*;
 import kh.gangnam.movie.Model.OpenApiDTO.BoxOfficeResult;
-import kh.gangnam.movie.Model.OpenApiDTO.DailyBoxOffice;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,7 +19,7 @@ public class BoxOfficeResultDAO {
     private String boxofficeType;
     private String showRange;
 
-    @OneToMany(mappedBy = "boxOfficeResult")
+    @OneToMany(mappedBy = "boxOfficeResult", cascade = CascadeType.ALL)
     private List<DailyBoxOfficeDAO> dailyBoxOfficeList;
 
     public static BoxOfficeResultDAO fromDTO(BoxOfficeResult dto) {
